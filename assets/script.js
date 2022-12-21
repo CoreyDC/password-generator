@@ -29,12 +29,21 @@ function generatePassword() {
   characterTypes();
 
   const characterAmount = window.prompt('How many characters would you like you password to be (between 8-128)');
-  /* if ( characterAmount < 8 || characterAmount > 128 ) {
-    window.alert('Please type a number between 8-128');
-    characterAmount;
-  } */
+  let random = Math.floor( Math.random() * passwordCreate.length );
+  let randomCharacter = passwordCreate[random];
+
+    let i = 0;
+    while ( i <= characterAmount ) {
+      console.log(randomCharacter);
+      i++;
+    }
+  
+
   
 }
+
+
+
 
 /* FUNCTION TO RECIEVE INPUT FROM THE USER BASED ON WHAT CHARACTERS THEY WANT IN PASSWORD */
 function characterTypes() {
