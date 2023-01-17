@@ -9,6 +9,8 @@ const upperCaseLetters = letters.map(element => {
 let userSelection = [];
 let userPassword = [];
 
+const passwordText = document.querySelector("#password");
+
 
 /* PROGRAM STARTS ON THE CLICK on the button with the id #generate */
 const generateBtn = document.querySelector("#generate");
@@ -18,7 +20,6 @@ generateBtn.addEventListener("click", writePassword);
 // FUNCTION THAT RETURNS USER PASSWORD TO DOCUMENT
 function writePassword() {
   var password = generatePassword();
-  const passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 } 
@@ -26,6 +27,7 @@ function writePassword() {
 
 // FUNCTION THAT GENERATES USER PASSWORD
 function generatePassword() {
+  userPassword.length = 0;
   window.alert("Generate a random password between 8 and 128 characters!");
   
   const characterAmount = window.prompt("How many characters would you like you password to be (between 8-128)");
@@ -36,7 +38,7 @@ function generatePassword() {
 
   characterTypes();
 
-  for ( let i = 0; i <= characterAmount; i++ ) {
+  for ( let i = 0; i < characterAmount; i++ ) {
     userPassword.push( userSelection[Math.floor( Math.random() * userSelection.length )] );
   }
   
@@ -46,10 +48,10 @@ function generatePassword() {
 
 // FUNCTION TO RECIEVE INPUT FROM THE USER BASED ON WHAT CHARACTERS THEY WANT IN PASSWORD 
 function characterTypes() {
-  let hasLetters = window.confirm("Do you want letters in your password?");
-  let hasNumbers = window.confirm("Do you want numbers in your password?");
-  let hasSpecials = window.confirm("Do you want special characters in your password?");
-  let hasUpperCase = window.confirm("Do you want Upper and lower case letters?");
+  let hasLetters = window.confirm("Do you want LOWER-CASE letters in your password?");
+  let hasNumbers = window.confirm("Do you want NUMBERS in your password?");
+  let hasSpecials = window.confirm("Do you want SPECIAL CHARACTERS in your password?");
+  let hasUpperCase = window.confirm("Do you want UPPER-CASE letters in your password?");
 
   if ( hasLetters ) {
     userSelection = userSelection.concat(letters);
